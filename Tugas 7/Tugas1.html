@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <title>React Uncover</title>
+</head>
+<style>
+    *{
+        font-family: 'Josefin Sans';
+    }
+    body{
+        margin-left: 50px;
+        margin-top: 50px;
+    }
+</style>
+<body>
+    <div id="root"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+        const Tombol = (props) => {
+            const handleButtonClick = (event) => {
+                console.log(event); 
+                console.log(event.target);              
+                console.log(event.target.innerHTML);
+                alert(props.pesan)
+            }
+                return (
+                    <a href={props.href}>
+                    <button onClick={handleButtonClick}style={{margin: "10px"}}>
+                        {props.children}
+                    </button>
+                    </a>
+                )     
+        }
+
+        const MyApp = () => {
+                return(
+                    <React.Fragment>
+                        <div>
+                            <h1>Belajar React</h1>
+                            <Tombol pesan="Belajar React" href="https://react.dev/">React</Tombol>
+                            <Tombol pesan="Belajar JavaScript" href="https://www.javascript.com/">JavaScript</Tombol>
+                        </div>
+                    </React.Fragment>
+                    
+                )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<MyApp />);
+    </script>
+</body>
+</html>

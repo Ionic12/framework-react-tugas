@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Josefin Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <title>UTS</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+
+        // Alur pengiriman data dari class Data ke class Lismiati
+        
+        const Tombol = (props) => {
+            const handleBiodataButtonClick = (event) => {
+                console.log(props.biodata)
+                alert(props.biodata)
+            }
+                return (
+                    <button type="button" class="btn btn-primary" onClick={handleBiodataButtonClick}>
+                        {props.children}
+                    </button>
+            )     
+        }
+        const Lismiati = (props) => {
+            return (
+                <div class="container">
+                    <div class="row justify-content-md-center">
+                        <div class="col-3 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img src={props.pasFoto} alt={props.nama} class="rounded-circle mt-3" width="142"></img>
+                                    <div class="mt-3">
+                                    <h4>{props.nama}</h4>
+                                    <p class="text-secondary mb-3">{props.jurusan}</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-md-center">
+                                <div class="col-12 mt-3">
+                                    <Tombol biodata={`Name : ${props.nama}\nAlamat : ${props.alamat}\nNo HP : ${props.notelp}\nNama Ortu : ${props.namaOrtu}`}>Biodata</Tombol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                <h6 class="mb-0">Nama</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                {props.nama}
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                <h6 class="mb-0">Jurusan</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                {props.jurusan}
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                <h6 class="mb-0">Alamat</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                {props.alamat}
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                <h6 class="mb-0">No Telp</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {props.notelp}
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                <h6 class="mb-0">Nama Ortu</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {props.namaOrtu}
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            )
+        }
+        
+        const Data = () => {
+                const datas = [
+                    {
+                        id: "01",
+                        nama: "Iqshan Bagus Prasetyo",
+                        jurusan: "Teknik Informatika",
+                        notelp:"089630303740",
+                        alamat:"Jl. Sudimoro No.37",
+                        namaOrtu:"Lismiati",
+                        pasFoto: "img/me.jpg"
+                    },
+                ];
+                return (
+                    //berfungsi agar div tidak terlalu dalam dalam artian bisa untuk mengelompokan element tanpa menggunakan div
+                    <React.Fragment>
+                        <h1>UTS</h1>
+                        <hr style={{ borderWidth: "medium", color: "black" }} />
+
+                        <section style={{ display: "flex"}}>
+                            {datas.map(data => <Lismiati key={data.id} {...data} />)}
+                        </section>
+                    </React.Fragment>
+                )
+            }
+        // operator spread
+        ReactDOM.createRoot(document.getElementById("root")).render(<Data />);
+    </script>
+</body>
+<style>
+button{
+    width: 307px;
+}
+*{
+    font-family: "Josefin Sans";
+}
+h1{
+    font-size: 45px;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-top: 25px;
+}
+h4{
+    font-weight: bold;
+}
+body{
+    color: #1a202c;
+    text-align: left;
+    background-color: #e2e8f0;    
+}
+.container {
+    margin-top: 10px;
+}
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
+</style>
+</html>
