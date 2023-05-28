@@ -43,20 +43,18 @@
     <script src="js/react-dom.development.js"></script>
     <script src="js/babel.js"></script>
     <script type="text/babel">
+        
         const Tombol = (props) => {
             return (
                 <button onClick={() => props.onTombolClick(parseInt(props.counterChange))}>{props.children}</button>
             )
         }
-        
         const MyApp = () => {
             const [counter, setCounter] = React.useState(0)
 
             const handleTombolClick = (change) => {
                 setCounter((prevCount) => {return prevCount + change })
             }
-
-
             return (
                 <div>
                     <h1>{counter}</h1>
@@ -65,7 +63,6 @@
                 </div>
             )
         }
-
         ReactDOM.createRoot(document.getElementById('root')).render(<MyApp />);
 
     </script>

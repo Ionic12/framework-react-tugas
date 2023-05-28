@@ -48,20 +48,15 @@
             const handleClick = () => {
                 props.onTombolClick(parseInt(props.counterChange));
             }
-
             return (
                 <button onClick={handleClick}>{props.children}</button>
             )
         }
-        
         const MyApp = () => {
             const [counter, setCounter] = React.useState(0)
-
             const handleTombolClick = (change) => {
                 setCounter((prevCount) => {return prevCount + change })
             }
-
-
             return (
                 <div>
                     <h1>{counter}</h1>
@@ -70,7 +65,6 @@
                 </div>
             )
         }
-
         ReactDOM.createRoot(document.getElementById('root')).render(<MyApp />);
 
     </script>
