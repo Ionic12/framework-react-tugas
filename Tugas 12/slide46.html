@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>React</title>
+</head>
+<body>
+    <h1>Belajar Javascript</h1>
+    <script>
+        fetch("https://reqres.in/api/users/1")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Terjadi Gangguan");
+            }
+            return response.json();
+        })
+        .then(data => console.log(data.data))
+        .catch(error => {
+            console.log(error);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>React</title>
+</head>
+<body>
+    <h1>Belajar Javascript</h1>
+    <script>
+        fetch("https://reqres.in/api/users/1")
+        .then(response => response.json())
+        .then(data => {
+            let user = data.data;
+            console.log(user.id);
+            console.log(user.first_name);
+            console.log(user.last_name);
+            console.log(user.email);
+            console.log(user.avatar);
+        });
+    </script>
+</body>
+</html>
